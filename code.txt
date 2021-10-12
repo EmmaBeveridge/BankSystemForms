@@ -1,0 +1,79 @@
+ private void DisplayBalance(string accountID)
+        {
+            decimal accountBalance = 0m;
+            DateTime accountCreated = DateTime.Now;
+            string holderID = "";
+            string holderName = "";
+            string holderEmail = "";
+            DateTime holderDOB = DateTime.Now;
+
+
+            List<Account> AllAccounts = new List<Account>();
+            AllAccounts = Account.getAllAccounts;
+
+            List<Customer> AllCustomers = new List<Customer>();
+            AllCustomers = Customer.getAllCustomers;
+
+            foreach (Account account in AllAccounts)
+            {
+                if (account.getAccountID == accountID)
+                {
+                    accountBalance = account.getsetBalance;
+                    accountCreated = account.getTimeCreated;
+                    holderID = account.getAccountHolderID;
+                }
+            }
+            foreach (Customer customer in AllCustomers)
+            {
+                if (holderID == customer.getCustomerID)
+                {
+                    holderName = customer.getsetForename + " " + customer.getsetSurname;
+                    holderEmail = customer.getsetEmail;
+                    holderDOB = customer.getsetDOB;
+                }
+
+            }
+
+            string Message = $"Customer ID: {holderID}\nCustomer name: {holderName}\nCustomer Email: {holderEmail}\nCustomer DOB: {holderDOB}\nAccount ID:{accountID}\nTime Created: {accountCreated}\nBalance:£{accountBalance}";
+            MessageBox.Show(Message, "View Balance");
+        }
+
+
+
+
+string accountIDnowhitespace = Regex.Replace(textBox1.Text, @"\s+", "");
+            if (accountIDnowhitespace.Length < 8)
+            {
+                labelIDLenError.Text = "ID entered is too short";
+            }
+            else if (accountIDnowhitespace.Length > 8)
+            {
+                labelIDLenError.Text = "ID entered is too long";
+            }
+            else
+            {
+                labelIDLenError.Text = "";
+            }
+            if (!int.TryParse(accountIDnowhitespace, out _))
+            {
+                labelDigitError.Text = "ID must only contain digits";
+            }
+            else
+            {
+                labelDigitError.Text = "";
+            }
+
+
+
+
+
+
+
+
+private void buttonViewBalance_Click(object sender, EventArgs e)
+        {
+            ViewBalanceForm viewbalanceform = new ViewBalanceForm();
+            viewbalanceform.Owner = this;
+            viewbalanceform.Show();
+            this.Hide();
+        }
