@@ -66,6 +66,18 @@
     <Compile Include="CreateNewCustomerForm.Designer.cs">
       <DependentUpon>CreateNewCustomerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CreditAccountForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreditAccountForm.Designer.cs">
+      <DependentUpon>CreditAccountForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CreditAccountWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreditAccountWindow.Designer.cs">
+      <DependentUpon>CreditAccountWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="CustomerClass.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -89,6 +101,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CreateNewCustomerForm.resx">
       <DependentUpon>CreateNewCustomerForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreditAccountWindow.resx">
+      <DependentUpon>CreditAccountWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

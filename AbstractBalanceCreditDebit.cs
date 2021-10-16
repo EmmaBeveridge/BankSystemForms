@@ -15,11 +15,18 @@ namespace BankSystemForms
 {
     public partial class AbstractBalanceCreditDebit : Form
     {
+        public IDType idtype=IDType.Default;
         public AbstractBalanceCreditDebit()
         {
             InitializeComponent();
+            
         }
-
+        public enum IDType
+        {
+            Account,
+            Customer,
+            Default
+        }
         protected void textBox1_TextChanged(object sender, EventArgs e)
         {
             string accountIDnowhitespace = Regex.Replace(textBox1.Text, @"\s+", "");
@@ -70,6 +77,22 @@ namespace BankSystemForms
 
         }
 
+        protected bool CustomerIDExists(string customerID)
+        {
+            string customerIDnowhitespace = Regex.Replace(customerID, @"\s+", "");
+            HashSet<string> allCustomerIDs = Customer.getAllCustomerIDs;
+            if (allCustomerIDs.Contains(customerIDnowhitespace))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+
+        }
+
         private void AbstractBalanceCreditDebit_FormClosed(object sender, FormClosedEventArgs e)
         {
             this.Owner.Show();
@@ -77,7 +100,19 @@ namespace BankSystemForms
 
         private void AbstractBalanceCreditDebit_Load(object sender, EventArgs e)
         {
+            if (idtype==IDType.Customer)
+            {
+                label1.Text = "Enter Customer ID: ";
+            }
+            else if (idtype==IDType.Account)
+            {
+                label1.Text = "Enter Account ID";
 
+            }
+            else
+            {
+                label1.Text = "Error";
+            }
         }
     }
 }

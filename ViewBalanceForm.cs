@@ -17,6 +17,7 @@ namespace BankSystemForms
         public ViewBalanceForm()
         {
             InitializeComponent();
+            idtype = IDType.Account;
         }
 
         private void ViewBalanceForm_Load(object sender, EventArgs e)

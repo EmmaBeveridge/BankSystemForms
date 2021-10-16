@@ -1,0 +1,17 @@
+private void buttonSubmit_Click(object sender, EventArgs e)
+        {
+            string customerIDnowhitespace = Regex.Replace(textBox1.Text, @"\s+", "");
+            HashSet<string> allCustomerIDs = Customer.getAllCustomerIDs;
+            if (!allCustomerIDs.Contains(customerIDnowhitespace))
+            {
+                MessageBox.Show("Customer ID entered is not recognised", "Create New Account");
+            }
+            else
+            {
+                Account accountTemp = new Account(customerIDnowhitespace, DateTime.Now);
+                Account.AddAccount(accountTemp);
+                MessageBox.Show($"New account created with ID: {accountTemp.getAccountID}");
+                this.Hide();
+                this.Owner.Show();
+            }
+        }

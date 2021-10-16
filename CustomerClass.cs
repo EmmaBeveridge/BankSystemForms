@@ -18,6 +18,7 @@ namespace BankingSystem
         private DateTime DOB;
         private List<Account> CustomerAccounts = new List<Account>();
         private static List<Customer> AllCustomers = new List<Customer>();
+        
         public Customer(string argForename, string argSurname, string argEmail, DateTime argDOB)
         {
             CustomerCount++;
@@ -28,6 +29,16 @@ namespace BankingSystem
             getsetDOB = argDOB;
 
         }
+
+
+        public string AddAccountForCustomer(string accountID, DateTime TimeCreated)
+        {
+            Account accountTemp = new Account(accountID, TimeCreated);
+            CustomerAccounts.Add(accountTemp);
+            Account.AddAccount(accountTemp);
+            return accountTemp.getAccountID;
+        }
+
 
         public static List<Customer> getAllCustomers
         {
